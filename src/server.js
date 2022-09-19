@@ -5,7 +5,7 @@ const sendSms = require('./sms');
 
 require('dotenv').config();
 
-const port = process.env.PORT || 1989;
+const port = process.env.PORT || 1089;
 
 const app = express();
 
