@@ -2,25 +2,34 @@ const nodemailer = require('nodemailer');
 const { json } = require('express');
    require('dotenv').config();
 
-   const mailHost = JSON.parse('{"mail":"samueltekyi@gmail.com", "pass":"GMAILP@$s1234"}');
+   const mailHost = JSON.parse('{"mail":"michale.huel@ethereal.email", "pass":"pncMzuNWZ4qXJPctk2"}');
 
 
 async  function mailer(req, res, next){
 
-let transporter = nodemailer.createTransport(
+/*let transporter = nodemailer.createTransport( 
     {
         service: 'gmail',
         auth:{
-            user : mailHost.mail,
-            pass : mailHost.pass
+            user : 'gifecmailer@gmail.com',
+            pass : 'P@$s1234'
         }
     }
-);
+); */
+
+const transporter = nodemailer.createTransport({
+    host: 'smtp.ethereal.email',
+    port: 587,
+    auth: {
+        user: 'michale.huel@ethereal.email',
+        pass: 'pncMzuNWZ4qXJPctk2'
+    }
+});
 
 
 let mailOptions = {
     from: mailHost.mail,
-    to:'asamoahtekyi@gmail.com',
+    to:'samuel.tekyi@gifec.gov.gh',
     subject: 'man man',
     text: 'hi there am there'   
 };
@@ -34,7 +43,7 @@ await  transporter.sendMail(mailOptions,(error, info)=>{
     };
 
     req.error = error;
-    req.info =  JSON.stringify(info.to);
+    req.info =  JSON.stringify(mailOptions.to);
 
     console.log(req.info);
       
