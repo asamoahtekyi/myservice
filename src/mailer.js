@@ -2,7 +2,7 @@ const nodemailer = require('nodemailer');
 const { json } = require('express');
    require('dotenv').config();
 
-   const mailHost = JSON.parse(process.env.EMAIL);
+   const mailHost = JSON.parse('{"mail":"samueltekyi@gmail.com", "pass":"GMAILP@$s1234"}');
 
 
 async  function mailer(req, res, next){
